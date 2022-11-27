@@ -8,7 +8,6 @@ import org.mockito.Mockito.anyInt
 import org.mockito.Mockito.withSettings
 import org.mockito.kotlin.*
 
-
 class MockitoTest {
     @Mock
     lateinit var mockList: MutableList<String>
@@ -351,5 +350,28 @@ class MockitoTest {
         }
     }
 
+    //获取mock详情信息
+    @Test
+    fun `Mocking details`(){
+        mockFoo.someMethod()
+        val mockingDetails = mockingDetails(mockFoo)
+        //判断对象是mock还是spy
+        mockingDetails.isMock
+        mockingDetails.isSpy
+        //获取其他信息
+        mockingDetails.mockCreationSettings.typeToMock
+        mockingDetails.mockCreationSettings.defaultAnswer
+        mockingDetails.invocations
+        mockingDetails.stubbings
+        //打印所有交互信息
+        println(mockingDetails.printInvocations())
+    }
 
+    //BDD风格验证
+    @Test
+    fun `BDD style verification`(){
+        given(mockFoo.someMethod()).willReturn("BDD Return")
+        mockFoo.someMethod()
+        then(mockFoo).should(times(1))
+    }
 }

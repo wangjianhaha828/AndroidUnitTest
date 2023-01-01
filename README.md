@@ -20,4 +20,3 @@ fun setup() {
 @Mock
 lateinit var mockList: MutableList<String>
 ```
-

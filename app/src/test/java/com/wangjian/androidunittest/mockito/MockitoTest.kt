@@ -3,8 +3,11 @@ package com.wangjian.androidunittest.mockito
 import com.wangjian.androidunittest.demo.Foo
 import org.junit.Before
 import org.junit.Test
-import org.mockito.*
+import org.mockito.ArgumentCaptor
+import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.Mockito.anyInt
+import org.mockito.MockitoAnnotations
 import org.mockito.kotlin.*
 
 class MockitoTest {
@@ -372,5 +375,13 @@ class MockitoTest {
         given(mockFoo.someMethod()).willReturn("BDD Return")
         mockFoo.someMethod()
         then(mockFoo).should(times(1))
+    }
+
+    //抛出异常
+    @Test(expected = NullPointerException::class)
+    @Throws(NullPointerException::class)
+    fun `exception is thrown`(){
+        val str:String? = "test"
+        str.toString()
     }
 }

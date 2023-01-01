@@ -1,11 +1,10 @@
-package com.wangjian.androidunittest
+package com.wangjian.androidunittest.mockito
 
 import com.wangjian.androidunittest.demo.Foo
 import org.junit.Before
 import org.junit.Test
 import org.mockito.*
 import org.mockito.Mockito.anyInt
-import org.mockito.Mockito.withSettings
 import org.mockito.kotlin.*
 
 class MockitoTest {

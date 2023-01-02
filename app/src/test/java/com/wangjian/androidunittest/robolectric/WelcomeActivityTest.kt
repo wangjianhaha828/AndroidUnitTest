@@ -17,6 +17,9 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.RuntimeEnvironment.application
 import org.robolectric.Shadows.shadowOf
+import org.robolectric.shadows.ShadowAlertDialog
+import org.robolectric.shadows.ShadowDialog
+import org.robolectric.shadows.ShadowToast
 
 
 @RunWith(RobolectricTestRunner::class)
@@ -59,7 +62,7 @@ class WelcomeActivityTest {
         }
     }
 
-    //获取所有显示过的toast
+    //Toast验证
     @Test
     fun `retrieves all the toasts that have been displayed`() {
         Toast.makeText(RuntimeEnvironment.getApplication(), "first toast", Toast.LENGTH_SHORT)
@@ -71,5 +74,36 @@ class WelcomeActivityTest {
             println(it.duration)
             assertEquals(it.duration,Toast.LENGTH_SHORT)
         }
+        assertEquals("second toast",ShadowToast.getTextOfLatestToast())
+    }
+
+    //Dialog验证(有问题)
+    @Test
+    fun testDialog(){
+        Robolectric.buildActivity(WelcomeActivity::class.java).use { controller ->
+            controller.setup() // Moves Activity to RESUMED state
+            val activity = controller.get()
+
+            var latestAlertDialog = ShadowAlertDialog.getLatestAlertDialog()
+            //判断dialog尚未弹出
+            assertNull(latestAlertDialog)
+
+            activity.findViewById<View>(R.id.showDialog).performClick()
+            latestAlertDialog = ShadowAlertDialog.getLatestAlertDialog()
+            //判断dialog已经弹出
+            assertNotNull(latestAlertDialog)
+            val shadowDialog  = shadowOf(latestAlertDialog)
+            assertEquals("Hello",shadowDialog.message)
+        }
+
+    }
+
+    //访问资源文件
+    @Test
+    fun testResources(){
+        val application = RuntimeEnvironment.getApplication()
+        val appName = application.getString(R.string.app_name)
+        println(appName)
+        assertEquals("AndroidUnitTest",appName)
     }
 }

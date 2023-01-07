@@ -4,47 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".robolectric.WelcomeActivity">
+    tools:context=".espresso.EspressoSimpleActivity">
 
     <Button
         android:id="@+id/changeTextBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="更改文字"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/changeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="默认文字"
+        android:layout_marginTop="9dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeTextBtn" />
 
-    <Button
-        android:id="@+id/startNewActivityBtn"
+    <Spinner
+        android:id="@+id/planets_spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="打开新界面"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/changeText"/>
 
-    <Button
-        android:id="@+id/showDialog"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/spinner_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="弹出Dialog"
+        android:text="Spinner默认内容"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startNewActivityBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
 </androidx.constraintlayout.widget.ConstraintLayout>

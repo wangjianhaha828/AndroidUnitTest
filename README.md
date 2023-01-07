@@ -51,3 +51,21 @@ android.enableUnitTestBinaryResources=true
 class WelcomeActivityTest{
 }
 ```
+
+## Espresso
+### [官方文档](https://developer.android.com/training/testing/espresso)
+### 添加依赖
+*build.gradle*
+```
+  android {
+  defaultConfig { {
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+}
+
+dependencies {
+  androidTestImplementation 'androidx.test:runner:1.1.0'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+  androidTestImplementation 'androidx.test:rules:1.1.0'
+}
+```

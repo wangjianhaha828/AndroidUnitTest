@@ -1,21 +1,26 @@
 package com.wangjian.androidunittest.junit
 
 import com.wangjian.androidunittest.matcher.MapMatcher.Companion.hasValue
+import com.wangjian.androidunittest.rule.MyRule
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class ListJunitTest {
     private lateinit var mutableList: MutableList<String>
     private lateinit var mutableMap: MutableMap<Int,String?>
 
+    //使用自定义Rule
+    @get:Rule
+    val rule: MyRule = MyRule()
 
     @Before
     fun setUp(){
-        println("测试开始")
+//        println("测试开始")
         mutableList = mutableListOf<String>("one", "two", "three")
         mutableMap = mutableMapOf<Int, String?>()
         mutableMap[0] = "zero"
@@ -25,7 +30,7 @@ class ListJunitTest {
 
     @After
     fun tearDown(){
-        println("测试结束")
+//        println("测试结束")
     }
 
     //

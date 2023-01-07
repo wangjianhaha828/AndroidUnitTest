@@ -27,14 +27,13 @@ lateinit var mockList: MutableList<String>
 ### 添加依赖
 *build.gradle*
 ```
-  android {
+android {
   testOptions {
     unitTests {
       includeAndroidResources = true
     }
   }
 }
-
 dependencies {
   testImplementation 'junit:junit:4.13.2'
   testImplementation 'org.robolectric:robolectric:4.9'
@@ -57,7 +56,7 @@ class WelcomeActivityTest{
 ### 添加依赖
 *build.gradle*
 ```
-  android {
+android {
   defaultConfig { {
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
